@@ -1,17 +1,82 @@
 import React, {Component} from 'react'
-import logo from '../company_logo.jpg';
+import {Bar} from 'react-chartjs-2'
 
-class AddInvestor extends Component {
+class Investors extends Component {
 
-  render() {
+  constructor(props){
+    super(props);
+    this.state = {
+        chartData: {
+
+          labels: ['IQOption',
+          'smallcase',
+          'Groww',
+          'Plus500',
+          'eToro',
+          'X-Trade Brokers'],
+
+          datasets: [{
+  					data: [
+  						100,
+  						50,
+  						60,
+  						70,
+  						20,
+  						30
+  					],
+
+  					backgroundColor: [
+  						'rgba(255, 99, 132, 0.2)',
+  						'rgba(54, 162, 235, 0.2)',
+  						'rgba(255, 206, 86, 0.2)',
+  						'rgba(75, 192, 192, 0.2)',
+  						'rgba(153, 102, 255, 0.2)',
+  						'rgba(25, 59, 164, 0.2)',
+  						'rgba(55, 19, 100, 0.2)'
+  					],
+  					label: 'Investors Shares'
+  				}],
+
+
+        }
+    }
+  }
+
+  render(){
+
+    var con_style = {
+      paddingLeft : 250,
+      align : "centre",
+      height : 600,
+      width : 1200
+    }
+
     return (
-      <div>
-          <br />
-          <br />
-          <img src={logo} className="Applogo" alt="logo" />
+      <div className="chart" style={con_style}>
+      <Bar
+
+          data = {this.state.chartData}
+          options={{
+            responsive: true,
+    				legend: {
+    					position: 'top',
+    				},
+    				title: {
+    					display: true,
+    					text: 'Investors Shares'
+    				},
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }}
+      />
       </div>
-    )
+    );
   }
 }
 
-export default AddInvestor
+export default Investors
