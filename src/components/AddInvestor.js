@@ -2,15 +2,21 @@ import React, {Component} from 'react'
 
 class AddInvestor extends Component {
   state = {
-
+      investor : '',
+      platform : '',
+      amount : ''
   }
 
   handleChange = (e) => {
-      console.log(e)
+      this.setState({
+        [e.target.id]: e.target.value
+      })
   }
 
   handleSubmit = (e) => {
-      console.log(e)
+      // prevent default action of form submission ->  blank form entries
+      //e.preventDefault();
+      console.log(this.state);
   }
 
   render() {
@@ -25,18 +31,18 @@ class AddInvestor extends Component {
           <br />
 
           <div>
-            <label htmlFor="email">Investor</label>
-            <input type="email" id="email" onChange={this.handleSubmit} />
+            <label htmlFor="investor">Investor</label>
+            <input type="text" id="investor" onChange={this.handleChange} />
           </div>
 
           <div>
-            <label htmlFor="password">Platform</label>
-            <input type="password" id="password" onChange={this.handleSubmit} />
+            <label htmlFor="platform">Platform</label>
+            <input type="text" id="platform" onChange={this.handleChange} />
           </div>
 
           <div>
-            <label htmlFor="password">Amount</label>
-            <input type="password" id="password" onChange={this.handleSubmit} />
+            <label htmlFor="amount">Amount</label>
+            <input type="text" id="amount" onChange={this.handleChange} />
           </div>
 
           <br />

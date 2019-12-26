@@ -8,21 +8,21 @@ class Investors extends Component {
     this.state = {
         chartData: {
 
-          labels: ['IQOption',
-          'smallcase',
-          'Groww',
-          'Plus500',
-          'eToro',
-          'X-Trade Brokers'],
+          labels: ['Berkshire Hathaway',
+          'Goldman Sachs',
+          'JP Morgan Chase',
+          'Alibaba Group',
+          'Exxon Mobile',
+          'Alphabet Inc.'],
 
           datasets: [{
   					data: [
-  						100,
-  						50,
-  						60,
-  						70,
-  						20,
-  						30
+  						1000,
+  						801,
+  						676,
+  						1180,
+  						200,
+  						560
   					],
 
   					backgroundColor: [

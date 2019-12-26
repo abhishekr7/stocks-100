@@ -8,12 +8,12 @@ class Volume extends Component {
     this.state = {
         chartData: {
 
-          labels: ['IQOption',
-          'smallcase',
-          'Groww',
-          'Plus500',
-          'eToro',
-          'X-Trade Brokers'],
+          labels: ['28 April 2019',
+          '28 May 2019',
+          '28 June 2019',
+          '28 July 2019',
+          '28 August 2019',
+          '28 September 2019'],
 
           datasets: [{
   					data: [
@@ -25,16 +25,11 @@ class Volume extends Component {
   						30
   					],
 
-  					backgroundColor: [
-  						'rgba(255, 99, 132, 0.2)',
-  						'rgba(54, 162, 235, 0.2)',
-  						'rgba(255, 206, 86, 0.2)',
-  						'rgba(75, 192, 192, 0.2)',
-  						'rgba(153, 102, 255, 0.2)',
-  						'rgba(25, 59, 164, 0.2)',
-  						'rgba(55, 19, 100, 0.2)'
-  					],
-  					label: 'Volume Trend'
+            lineTension : 0,
+
+  					backgroundColor: 'rgba(55, 19, 100, 0.2)',
+
+            label: 'Volume Trend'
   				}],
 
 
