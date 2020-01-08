@@ -4,12 +4,13 @@ import logo from '../company_logo.jpg';
 class AddInvestor extends Component {
 
   render() {
+
     return (
+
       <div>
-          <br />
-          <br />
-          <img src={logo} className="Applogo" alt="logo" />
+          <img src={logo} className="Applogo" alt="logo" height = '650' paddingLeft = '100'/>
       </div>
+
     )
   }
 }

@@ -17,7 +17,6 @@ function App() {
     <BrowserRouter>
         <div className="App">
 
-            <NavBar />
 
             <Switch>
                 <Route path = '/home' component={Home}/>

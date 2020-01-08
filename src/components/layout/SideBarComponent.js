@@ -3,10 +3,16 @@ import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import Platforms from '../charts/Platforms'
 import Investors from '../charts/Investors'
 import Volume from '../charts/Volume'
+import Home from '../Home'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import ReactDOM from 'react-dom';
 
 class SideBarComponent extends Component {
+
+    displayHome(e,d){
+          console.log("displaying platforms")
+          ReactDOM.render(<Home />, document.getElementById('display'));
+    }
 
     displayPlatforms(e,d){
           console.log("displaying platforms")
@@ -35,26 +41,49 @@ class SideBarComponent extends Component {
             visible
             width='thin'
           >
+
+          <Menu.Item as='a' onClick={this.displayHome}>
+            <Icon name='home' />
+            Home
+          </Menu.Item>
+
             <Menu.Item as='a' onClick={this.displayPlatforms}>
-              <Icon name='chart pie' />
-              Platforms
+              <Icon name='clipboard outline' />
+              Details
             </Menu.Item>
+
             <Menu.Item as='a' onClick={this.displayInvestors}>
-              <Icon name='chart bar' />
-              Investors
+              <Icon name='balance scale' />
+              Compare
             </Menu.Item>
+
             <Menu.Item as='a' onClick={this.displayVolume}>
               <Icon name='chart line' />
-              Volume Trend
+              Trends
             </Menu.Item>
+
+            <Menu.Item as='a' onClick={this.displayVolume}>
+              <Icon name='rupee sign' />
+              Forex
+            </Menu.Item>
+
+            <Menu.Item as='a' onClick={this.displayVolume}>
+              <Icon name='trophy' />
+              Commodities
+            </Menu.Item>
+
+            <Menu.Item as='a' onClick={this.displayVolume}>
+              <Icon name='info' />
+              About Us
+            </Menu.Item>
+
           </Sidebar>
 
           <Sidebar.Pusher>
             <Segment basic>
-              <Header as='h3' style={{paddingLeft : 100}}>Metrics</Header>
 
                 <div id="display">
-                    <Platforms />
+                    <Home />
                 </div>
 
             </Segment>
