@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
 
-import logo from './company_logo.jpg'
+import { Spring } from 'react-spring'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 

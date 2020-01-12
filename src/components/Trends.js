@@ -1,7 +1,21 @@
 import React, {Component} from 'react'
 import {Line} from 'react-chartjs-2'
+import { Dropdown } from 'semantic-ui-react'
 
-class Volume extends Component {
+const companyOptions = [
+        {key: 'AMZN', text: 'Amazon.com, Inc', value: 'AMZN'},
+        {key: 'GOOGL', text: 'Alphabet Inc.', value: 'GOOGL'},
+        {key: 'FB', text: 'Facebook, Inc.', value: 'FB'},
+        {key: 'AAPL', text: 'Apple Inc.', value: 'AAPL'},
+        {key: 'KO', text: 'Coca-Cola Co', value: 'KO'},
+        {key: 'UBER', text: 'Uber Technologies Inc', value: 'UBER'},
+        {key: 'NFLX', text: 'Netflix Inc', value: 'NFLX'},
+        {key: 'GS', text: 'Goldman Sachs Group Inc', value: 'GS'},
+        {key: 'TRVG', text: 'Trivago NV - ADR', value: 'TRVG'},
+        {key: 'MSFT', text: 'Microsoft Corporation', value: 'MSFT'}
+    ]
+
+class Trends extends Component {
 
   constructor(props){
     super(props);
@@ -29,7 +43,7 @@ class Volume extends Component {
 
   					backgroundColor: 'rgba(55, 19, 100, 0.2)',
 
-            label: 'Volume Trend'
+            label: 'Trends'
   				}],
 
 
@@ -47,6 +61,18 @@ class Volume extends Component {
     }
 
     return (
+
+      <div>
+          <div style={{ paddingLeft: 200, paddingRight: 60, paddingTop: 50 }}>
+                <Dropdown
+                  placeholder='Select Company'
+                  fluid
+                  search
+                  selection
+                  options={companyOptions}
+                />
+          </div>
+
       <div className="chart" style={con_style}>
       <Line
 
@@ -70,8 +96,9 @@ class Volume extends Component {
           }}
       />
       </div>
+      </div>
     );
   }
 }
 
-export default Volume
+export default Trends

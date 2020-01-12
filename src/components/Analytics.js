@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import Platforms from './charts/Platforms'
-import Investors from './charts/Investors'
-import Volume from './charts/Volume'
+import Compare from './Compare'
+import Trends from './Trends'
 import Home from './Home'
 import About from './About'
 import Details from './Details'
@@ -12,28 +12,23 @@ import ReactDOM from 'react-dom';
 class Analytics extends Component {
 
     displayHome(e,d){
-          console.log("displaying platforms")
+          console.log("displaying home")
           ReactDOM.render(<Home />, document.getElementById('display'));
     }
 
-    displayPlatforms(e,d){
-          console.log("displaying platforms")
-          ReactDOM.render(<Platforms />, document.getElementById('display'));
-    }
-
     displayDetails(e,d){
-          console.log("displaying platforms")
+          console.log("displaying details")
           ReactDOM.render(<Details />, document.getElementById('display'));
     }
 
-    displayInvestors(e,d){
-          console.log("displaying investors")
-          ReactDOM.render(<Investors />, document.getElementById('display'));
+    displayCompare(e,d){
+          console.log("displaying compare")
+          ReactDOM.render(<Compare />, document.getElementById('display'));
     }
 
-    displayVolume(e,d){
-          console.log("displaying volume")
-          ReactDOM.render(<Volume />, document.getElementById('display'));
+    displayTrends(e,d){
+          console.log("displaying trends")
+          ReactDOM.render(<Trends />, document.getElementById('display'));
     }
 
     displayAbout(e,d){
@@ -67,24 +62,14 @@ class Analytics extends Component {
               Details
             </Menu.Item>
 
-            <Menu.Item as='a' onClick={this.displayInvestors}>
+            <Menu.Item as='a' onClick={this.displayCompare}>
               <Icon name='balance scale' />
               Compare
             </Menu.Item>
 
-            <Menu.Item as='a' onClick={this.displayVolume}>
+            <Menu.Item as='a' onClick={this.displayTrends}>
               <Icon name='chart line' />
               Trends
-            </Menu.Item>
-
-            <Menu.Item as='a' onClick={this.displayVolume}>
-              <Icon name='rupee sign' />
-              Forex
-            </Menu.Item>
-
-            <Menu.Item as='a' onClick={this.displayVolume}>
-              <Icon name='trophy' />
-              Commodities
             </Menu.Item>
 
             <Menu.Item as='a' onClick={this.displayAbout}>
