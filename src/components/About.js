@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import logo from '../company_logo.jpg';
 
-class Home extends Component {
+class About extends Component {
 
   render() {
     return (
@@ -12,4 +12,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default About
