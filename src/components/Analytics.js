@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
-import Platforms from './charts/Platforms'
 import Compare from './Compare'
 import Trends from './Trends'
 import Home from './Home'

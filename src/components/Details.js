@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Table } from 'semantic-ui-react'
 import { Dropdown } from 'semantic-ui-react'
+import { db } from '../firebase'
 
 const companyOptions = [
         {key: 'AMZN', text: 'Amazon.com, Inc', value: 'AMZN'},
@@ -15,40 +16,13 @@ const companyOptions = [
         {key: 'MSFT', text: 'Microsoft Corporation', value: 'MSFT'}
     ]
 
-const onChange = (event, data) => {
-
-        // make api call here
-        // something to do with setting the state
-
-        var ticker_symbol = data.value
-        var api_token = 'WDfwGuk6Te3Gtjwb5dE55IOeF1EfBsSodusSaC65shAn0TRBgWce25Jb48r4'
-        var source = 'http://api.worldtradingdata.com/api/v1/stock?symbol='+ ticker_symbol + '&api_token='+ api_token
-
-        //const request = require('request');
-
-        /*
-        request(source, { json: true }, (err, res, body) => {
-
-              console.log(source);
-
-              if (err) {
-                 console.log(err);
-              }
-              console.log(res);
-              console.log(body);
-              console.log(err);
-        });
-        */
-
-  };
-
 class Details extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             name: 'Stocks Wala',
-            symbol: 'STO',
-            currency: 'INR',
+            symbol: 'STWL',
+            currency: '0',
             price: '0',
             priceOpen: '0',
             dayHigh: '0',
@@ -56,6 +30,30 @@ class Details extends React.Component {
             volume: '0',
             marketCap: '0'
         };
+    }
+
+    handleSelectOption(event, data){
+
+        // get a single doc
+        db.collection("stocksData").doc(data.value).get().then(doc => {
+            const company = doc.data();
+            console.log(data);
+            console.log(this);
+
+            this.setState({
+                name: company.name,
+                symbol: company.ticker,
+                currency: company.currency,
+                price: company.price,
+                priceOpen: company.open,
+                dayHigh: company.high,
+                dayLow: company.low,
+                volume: company.volume,
+                marketCap: company.market
+            });
+
+        })
+
     }
 
     render(){
@@ -68,10 +66,10 @@ class Details extends React.Component {
                 search
                 selection
                 options={companyOptions}
-                onChange={onChange}
+                onChange={this.handleSelectOption.bind(this)}
               />
 
-              <Table>
+              <Table fixed>
                     <Table.Header>
                         <Table.Row>
                           <Table.HeaderCell>Company</Table.HeaderCell>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Line} from 'react-chartjs-2'
 import { Dropdown } from 'semantic-ui-react'
+import { db } from '../firebase'
 
 const companyOptions = [
         {key: 'AMZN', text: 'Amazon.com, Inc', value: 'AMZN'},
@@ -22,22 +23,10 @@ class Trends extends Component {
     this.state = {
         chartData: {
 
-          labels: ['28 April 2019',
-          '28 May 2019',
-          '28 June 2019',
-          '28 July 2019',
-          '28 August 2019',
-          '28 September 2019'],
+          labels: [],
 
           datasets: [{
-  					data: [
-  						100,
-  						50,
-  						60,
-  						70,
-  						20,
-  						30
-  					],
+  					data: [],
 
             lineTension : 0,
 
@@ -45,10 +34,36 @@ class Trends extends Component {
 
             label: 'Trends'
   				}],
-
-
         }
     }
+  }
+
+  handleSelectOption(event, data){
+
+    // get a single doc
+    db.collection("stocksPerformance").doc(data.value).get().then(doc => {
+
+        var valueArr = []
+        var labelArr = []
+
+        const company = doc.data();
+
+        //console.log(company);
+
+        for(var x in company){
+          labelArr.push(x);
+          valueArr.push(company[x]);
+        }
+
+        var newState = this.state.chartData
+
+        newState.labels = labelArr;
+        newState.datasets[0].data = valueArr;
+
+        this.setState({newState})
+
+    })
+
   }
 
   render(){
@@ -70,6 +85,7 @@ class Trends extends Component {
                   search
                   selection
                   options={companyOptions}
+                  onChange={this.handleSelectOption.bind(this)}
                 />
           </div>
 

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Spring } from 'react-spring/renderprops'
 
 const c1Style = {
-  background: 'grey',
+  background: 'dimgrey',
   color: 'white',
   padding: '1.5rem',
   width: '100%'

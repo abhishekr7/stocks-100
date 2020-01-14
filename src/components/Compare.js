@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import {Bar} from 'react-chartjs-2'
 import { Dropdown } from 'semantic-ui-react'
+import { db } from '../firebase'
 
 const metricOptions = [
-        {key: 'price1', text: 'Price', value: 'price1'},
-        {key: 'price2', text: 'Price Open', value: 'price2'},
-        {key: 'day1', text: 'Day High', value: 'day1'},
-        {key: 'day2', text: 'Day Low', value: 'day2'},
+        {key: 'price', text: 'Price', value: 'price'},
+        {key: 'open', text: 'Price Open', value: 'open'},
+        {key: 'high', text: 'Day High', value: 'high'},
+        {key: 'low', text: 'Day Low', value: 'low'},
         {key: 'volume', text: 'Volume', value: 'volume'},
         {key: 'market', text: 'Market Cap', value: 'market'},
     ]
@@ -33,16 +34,16 @@ class Compare extends Component {
 
           datasets: [{
   					data: [
-  						1000,
-  						801,
-  						676,
-  						1180,
-  						200,
-  						560,
-              1100,
-              400,
-              789,
-              990
+  						0,
+  						0,
+  						0,
+  						0,
+  						0,
+  						0,
+              0,
+              0,
+              0,
+              0
   					],
 
   					backgroundColor: [
@@ -65,6 +66,32 @@ class Compare extends Component {
     }
   }
 
+  handleSelectOption(event, option){
+
+      db.collection("stocksData").get().then(querySnapshot => {
+
+          var valueArr = []
+
+          console.log(valueArr)
+
+          const companies = querySnapshot.docs.map(doc => doc.data());
+
+          companies.forEach(company => {
+              //console.log(company[option.value])
+              valueArr.push(company[option.value])
+          });
+
+          //console.log(valueArr)
+
+          var newState = this.state.chartData.datasets[0]
+          newState.data = valueArr;
+          this.setState({newState})
+
+          //console.log(valueArr)
+      })
+
+  }
+
   render(){
 
     var con_style = {
@@ -84,6 +111,7 @@ class Compare extends Component {
             search
             selection
             options={metricOptions}
+            onChange={this.handleSelectOption.bind(this)}
           />
       </div>
 

@@ -9,7 +9,7 @@ const c1Style = {
 
 const WhyUs = () => (
 
-      <Spring from={{ opacity: 0.2, marginTop: -500 }} to={{ opacity: 1, marginTop: 0}}>
+      <Spring from={{ opacity: 0.2, marginTop: 2000 }} to={{ opacity: 1, marginTop: 0}}>
         {props => (
               <div style={props}>
                   <div style = {c1Style}>
